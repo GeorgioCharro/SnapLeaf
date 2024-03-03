@@ -11,6 +11,8 @@ import ForgotPassword from './pages/ForgotPassword'
 import 'react-toastify/dist/ReactToastify.css';
 import {ToastContainer} from 'react-toastify'
 import PrivateRoute from './components/PrivateRoute'
+import Category from './pages/Category';
+import Plant from './pages/Plant';
 function App() {
   return (
     <>
@@ -29,7 +31,9 @@ function App() {
       <Route path='/diagnose' element={<Diagnose/>} />
       <Route path='/more-page' element={<MorePage/>} />
       <Route path='/forgot-password' element={<ForgotPassword/>} />
-
+      <Route path='/category/:categoryName' element={<Category />} />
+      <Route path='/category/:categoryName/:plantName' element={<Plant />}/>
+      
 
       </Routes>
 

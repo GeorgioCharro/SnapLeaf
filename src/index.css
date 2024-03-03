@@ -44,26 +44,8 @@
     }
   }
 
-  .exploreCategoryHeading {
-    font-weight: 700;
-  }
   
-  .exploreCategoryHeading {
-    margin-top: 3rem;
-  }
 
-  .exploreCategoryImg {
-    min-height: 115px;
-    height: 15vw;
-    width: 100%;
-    border-radius: 1.5rem;
-    object-fit: cover;
-    margin: 0 auto;
-  }
-  
-  .exploreCategoryName {
-    font-weight: 500;
-    text-align: left;
-  }
+ 
 
 
