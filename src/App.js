@@ -17,7 +17,7 @@ function App() {
   return (
     <>
       <Router>
-      <NavBar />
+      
       <Routes>
       <Route path='/' element={<HomePage/>} />
       
@@ -32,7 +32,7 @@ function App() {
       <Route path='/more-page' element={<MorePage/>} />
       <Route path='/forgot-password' element={<ForgotPassword/>} />
       <Route path='/category/:categoryName' element={<Category />} />
-      <Route path='/category/:categoryName/:plantName' element={<Plant />}/>
+      <Route path='/category/:categoryName/:plantId/' element={<Plant />}/>
       
 
       </Routes>

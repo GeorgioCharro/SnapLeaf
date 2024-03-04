@@ -48,11 +48,11 @@ function Category() {
             <main>
             <ul className='p-0'>
               {plants.map((plant) => {
-                const nameWithoutSpaces = plant.data.name.replace(/\s/g, '');
+                
                 return (
               <PlantItem
                plant={plant.data}
-              name={nameWithoutSpaces}
+              name={plant.id}
               key={plant.id}
       />
     );
