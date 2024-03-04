@@ -14,6 +14,13 @@ import sunLightIcon from '../assets/svg/sunLightIcon.svg'
 import soilIcon from '../assets/svg/soilIcon.svg'
 import locationIcon from '../assets/svg/locationIcon.svg'
 import hardinessIcon from  '../assets/svg/hardinessIcon.svg'
+import propagationIcon from  '../assets/svg/propagationIcon.svg'
+import pruningIcon from  '../assets/svg/pruningIcon.svg'
+import wateringCanIcon from  '../assets/svg/wateringCanIcon.svg'
+import fertilizerIcon from  '../assets/svg/fertilizerIcon.svg'
+import repottingIcon from  '../assets/svg/repottingIcon.svg'
+import profileCircleIcon from  '../assets/svg/profileCircleIcon.svg'
+import chatbotImage from '../assets/png/chatbot.png'
 import Spinner from "../components/Spinner"
 function Plant() {
     const [plant,setPlant]=useState(null)
@@ -53,7 +60,7 @@ function Plant() {
     <div className="bg-white">
     <div className="flex items-center pt-5 ml-6">
     <img src={plantIconGuide} alt="PlantGuide" className=" h-6 w-6 " />
-    <p className="ml-2 text-xl font-bold text-gray-600">Field Guide</p>
+    <p className="ml-2 text-xl font-bold text-gray-700">Field Guide</p>
     </div>
     <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-2 p-10 rounded-xl">
   <div className="relative">
@@ -77,7 +84,7 @@ function Plant() {
     <div className="mt-4  bg-white">
         <div className="flex items-center pt-5 ml-6 mb-3">
             <img src={documentIcon} alt="Document" className=" h-6 w-6 " />
-            <p className="ml-2 text-xl font-bold text-gray-600">Key Facts</p>
+            <p className="ml-2 text-xl font-bold text-gray-700">Key Facts</p>
         </div>
         <p className='ml-6 rounded-lg bg-gray-50 p-2 mr-2 flex justify-between' >Toxicity </p>
         <p className='ml-6 rounded-lg  p-2 flex justify-between' >Plant Type 
@@ -103,14 +110,23 @@ function Plant() {
     <div className="mt-4 bg-white">
         <div className="flex items-center pt-5 ml-6 mb-3">
             <img src={bookIcon} alt="Book" className=" h-6 w-6 " />
-            <p className="ml-2 text-xl font-bold text-gray-600">Description</p>
+            <p className="ml-2 text-xl font-bold text-gray-700">Description</p>
+          </div>
+          <div className="p-4 -mt-3 text-gray-500 flex flex-auto items-center" >
+            <p>Cucumber (Cucumis sativus) is a creeping vine
+               native to South Asia. It has a long history of
+               cultivation mentions of its use are found in
+               various ancient scripts, including the Bible, Epic
+               of Gilgamesh and Pliny the Elder's "Natura/
+               History". Today, cucumber is one of the most
+               videly cultivated vegetable species in the world</p>
           </div>
         </div>
 
         <div className="mt-4 bg-white">
         <div className="flex items-center pt-5 ml-6 mb-3">
             <img src={plantCare} alt="Care" className=" h-6 w-6 " />
-            <p className="ml-2 text-xl font-bold text-gray-600">Conditions</p>
+            <p className="ml-2 text-xl font-bold text-gray-700">Conditions</p>
         </div>
 
         <div className="flex">
@@ -160,7 +176,7 @@ function Plant() {
             </div>
         </div>
         <div className="flex">
-           <div className="bg-gray-50 flex-grow ml-2 mt-4 mr-2 rounded-xl relative">
+           <div className="bg-gray-50 flex-grow ml-2 mt-4 mr-2 mb-4 rounded-xl relative">
               <div className="flex items-center pt-3 ml-6 mb-3">
                 <img src={locationIcon} alt="Location" className="h-6 w-6" />
               <div className="ml-2">
@@ -174,6 +190,101 @@ function Plant() {
 
 
         </div>
+
+        <div className="mt-4 bg-white">
+        <div className="flex items-center pt-5 ml-6 mb-3">
+            <img src={bookIcon} alt="Care" className=" h-6 w-6 " />
+            <p className="ml-2 text-xl font-bold text-gray-700">How-tos</p>
+        </div>
+
+        <div className="flex justify-center">
+  <div className="bg-gray-50 flex-grow ml-2 rounded-xl">
+    <div className="flex flex-col items-center pt-3  mb-3">
+      <img src={wateringCanIcon} alt="Temperature" className="h-10 w-10" />
+      <div className="">
+        <p className="text-sm font-medium text-gray-500">Water</p>
+      </div>
+      <div className="mt-2">
+        <button className="btn hover:bg-green-700 bg-green-600 border-green-600 px-5 rounded-3xl text-white py-2">View Frequency</button>
+      </div>
+    </div>
+  </div>
+  <div className="bg-gray-50 flex-grow ml-2 mr-2 rounded-xl">
+    <div className="flex flex-col items-center pt-3  mb-3">
+      <img src={fertilizerIcon} alt="Fertilize" className="h-10 w-10" />
+      <div className="">
+        <p className="text-sm font-medium text-gray-500">Fertilizer</p>
+      </div>
+      <div className="mt-2">
+        <button className="btn hover:bg-green-700 bg-green-600 border-green-600 px-5 rounded-3xl text-white py-2">View Frequency</button>
+      </div>
+    </div>
+  </div>
+</div>
+        <div className="flex">
+    <div className="bg-gray-50 flex-grow ml-2 mt-4 mr-2 rounded-xl relative">
+        <div className="flex items-center pt-3 ml-6 mb-3">
+            <img src={pruningIcon} alt="Pruning" className="h-6 w-6" />
+            <div className="ml-2">
+                <p className="text-sm font-medium text-gray-500">Pruning</p>
+                <p className="text-sm font-bold">{plant.sunLight}</p>
+            </div>
+        </div>
+        <img src={rightIcon} alt="Right Icon" className="absolute top-1/2 right-0 transform -translate-y-1/2 h-4 w-4 mr-2" />
+    </div>
+        </div>
+        <div className="flex">
+           <div className="bg-gray-50 flex-grow ml-2 mt-4 mr-2 rounded-xl relative">
+              <div className="flex items-center pt-3 ml-6 mb-3">
+                <img src={propagationIcon} alt="propagation" className="h-6 w-6" />
+              <div className="ml-2">
+                <p className="text-sm font-medium text-gray-500">Propagation</p>
+                <p className="text-sm font-bold">{plant.soil}</p>
+              </div>
+              </div>
+                <img src={rightIcon} alt="Right Icon" className="absolute top-1/2 right-0 transform -translate-y-1/2 h-4 w-4 mr-2"  />
+            </div>
+        </div>
+        <div className="flex ">
+           <div className="bg-gray-50 flex-grow ml-2 mt-4 mr-2 rounded-xl relative mb-4">
+              <div className="flex items-center pt-3 ml-6 mb-3">
+                <img src={repottingIcon} alt="repot" className="h-6 w-6" />
+              <div className="ml-2">
+                <p className="text-sm font-medium text-gray-500">Repotting</p>
+                <p className="text-sm font-bold">{plant.soil}</p>
+              </div>
+              </div>
+                <img src={rightIcon} alt="Right Icon" className="absolute top-1/2 right-0 transform -translate-y-1/2 h-4 w-4 mr-2"  />
+            </div>
+        </div>
+
+
+        </div>
+
+        <div className="mt-4 bg-white">
+  <div className="flex items-center pt-5 ml-6 mb-3">
+    <img src={profileCircleIcon} alt="profileCircle" className="h-6 w-6" />
+    <p className="ml-2 text-xl font-bold text-gray-700">ChatBot Support</p>
+  </div>
+  <div className="mt-4 ml-6">
+    <div className="flex flex-col">
+      <div className="flex items-center">
+        <img src={chatbotImage} alt="chatbot" className="h-20 w-20 rounded-xl" />
+        <div className="ml-4">
+          <p className="text-md font-medium text-gray-700">1-on-1 Direct Chat with our ChatBot</p>
+          <p className="text-sm text-gray-500 mr-4">Get expert care tips for your plant's specific needs</p>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+  </div>
+  <div className="pl-4 pr-4">
+    <button className="btn btn-white mt-4   rounded-xl border-green-600 bg-white text-green-600 w-full ">Ask Chatbot</button>
+  </div>
+  
+</div>
 
  </div>       
 </>   
