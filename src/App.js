@@ -11,6 +11,7 @@ import ForgotPassword from './pages/ForgotPassword'
 import 'react-toastify/dist/ReactToastify.css';
 import {ToastContainer} from 'react-toastify'
 import PrivateRoute from './components/PrivateRoute'
+import PlantSunlight from './pages/PlantSunlight';
 import Category from './pages/Category';
 import Plant from './pages/Plant';
 function App() {
@@ -33,7 +34,7 @@ function App() {
       <Route path='/forgot-password' element={<ForgotPassword/>} />
       <Route path='/category/:categoryName' element={<Category />} />
       <Route path='/category/:categoryName/:plantId/' element={<Plant />}/>
-      
+      <Route path='/category/:categoryName/:plantId/PlantSunlight' element={<PlantSunlight />}/>
 
       </Routes>
 

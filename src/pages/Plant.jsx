@@ -1,5 +1,5 @@
 
-import { useParams,useNavigate } from "react-router-dom"
+import { useParams,useNavigate,Link } from "react-router-dom"
 import documentIcon from '../assets/svg/documentIcon.svg'
 import bookIcon from '../assets/svg/bookIcon.svg'
 import plantIconGuide from '../assets/svg/plantGuide.svg'
@@ -21,6 +21,14 @@ import fertilizerIcon from  '../assets/svg/fertilizerIcon.svg'
 import repottingIcon from  '../assets/svg/repottingIcon.svg'
 import profileCircleIcon from  '../assets/svg/profileCircleIcon.svg'
 import chatbotImage from '../assets/png/chatbot.png'
+import fruitIcon from  '../assets/svg/fruitIcon.svg'
+import maturePlantIcon from  '../assets/svg/maturePlantIcon.svg'
+import plantCharact from  '../assets/svg/plantCharact.svg'
+import flowerIcon from  '../assets/svg/flowerIcon.svg'
+
+
+
+
 import Spinner from "../components/Spinner"
 function Plant() {
     const [plant,setPlant]=useState(null)
@@ -107,6 +115,22 @@ function Plant() {
         </p>
     </div>
 
+    <div className="mt-4  bg-white">
+    <div className="flex items-center pt-5 ml-6 mb-3">
+            <img src={plantCharact} alt="Charact" className=" h-6 w-6 " />
+            <p className="ml-2 text-xl font-bold text-gray-700">Characteristics</p>
+          </div>
+    <div className=" bg-gray-50 ml-4 mr-4 rounded-lg ">
+      <div className="flex justify-evenly ">
+        <img src={maturePlantIcon} alt="mature" className="h-6 w-6 mt-3" />
+        <img src={flowerIcon} alt="mature" className="h-6 w-6 mt-3" />
+        <img src={fruitIcon} alt="mature" className="h-6 w-6 mt-3" />
+      </div>
+    
+    </div>
+
+    </div>
+
     <div className="mt-4 bg-white">
         <div className="flex items-center pt-5 ml-6 mb-3">
             <img src={bookIcon} alt="Book" className=" h-6 w-6 " />
@@ -151,7 +175,7 @@ function Plant() {
           </div>
         
         </div>
-        <div className="flex">
+        <Link to={`PlantSunLight`} ><div className="flex">
     <div className="bg-gray-50 flex-grow ml-2 mt-4 mr-2 rounded-xl relative">
         <div className="flex items-center pt-3 ml-6 mb-3">
             <img src={sunLightIcon} alt="Sunlight" className="h-6 w-6" />
@@ -162,7 +186,7 @@ function Plant() {
         </div>
         <img src={rightIcon} alt="Right Icon" className="absolute top-1/2 right-0 transform -translate-y-1/2 h-4 w-4 mr-2" />
     </div>
-        </div>
+        </div></Link>
         <div className="flex">
            <div className="bg-gray-50 flex-grow ml-2 mt-4 mr-2 rounded-xl relative">
               <div className="flex items-center pt-3 ml-6 mb-3">
@@ -281,7 +305,7 @@ function Plant() {
     
   </div>
   <div className="pl-4 pr-4">
-    <button className="btn btn-white mt-4   rounded-xl border-green-600 bg-white text-green-600 w-full ">Ask Chatbot</button>
+    <button className="btn btn-white mt-4 font-bold   rounded-xl border-green-600 bg-white text-green-600 w-full ">Ask Chatbot</button>
   </div>
   
 </div>
