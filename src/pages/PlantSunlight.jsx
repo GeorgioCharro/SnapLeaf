@@ -154,12 +154,131 @@ function PlantSunlight() {
         </div>
         </details>
         </div>}
+        {plant.impactSunLightLeggyGrowth&&<div className="p-4 -mt-4">
+          <details className="collapse collapse-arrow bg-base-200 rounded-lg">
+          <summary className="collapse-title text-xl font-medium">Leggy or sparse growth</summary>
+          <div className="collapse-content"> 
+            <p>{plant.impactSunLightLeggyGrowthDescription}</p>
+        </div>
+        </details>
+        </div>}
+        {plant.impactSunLightSlowerGrowth&&<div className="p-4 -mt-4">
+          <details className="collapse collapse-arrow bg-base-200 rounded-lg">
+          <summary className="collapse-title text-xl font-medium">Slower or no new growth</summary>
+          <div className="collapse-content"> 
+            <p>{plant.impactSunLightSlowerGrowthDescription}</p>
+        </div>
+        </details>
+        </div>}
+        <div>
+          <p className="ml-4 text-lg font-bold mt-4 tex-gray-700">Solutions</p>
+        
+
+        {plant.sunLightSolution1.length !==0 && <div className="mt-4 flex ml-4 mr-4 text-gray-500">
+          <p>{plant.sunLightSolution1}</p>
+           </div>} 
+
+         {plant.sunLightSolution2.length !==0 && <div className="mt-4 flex ml-4 mr-4 text-gray-500">
+          <p>{plant.sunLightSolution2}</p>
+         </div>} 
+
+         <hr className="mt-4 mb-4" />
+        </div>
+
         
 
 
+           
+
       </div>}
       
+      {plant.excessSunLight && <div className="bg-white">
       
+        <div className="flex items-center mt-4">
+          <div className="p-4">
+            <img src={bulletCircle} alt="bullpoint" className="h-2 w-2 mt-4" />
+          </div>
+          <div>
+            <p className="text-gray-700 font-bold text-lg mt-4">Excess sunlight</p>
+          </div>
+        </div>
+
+        <div className="flex ml-4 mt-4">
+          <p className="text-gray-500">{plant.plantExcessSunlightDescription}</p>
+        </div>
+        {plant.excessSunLightChloris && <div className="p-4">
+          <details className="collapse collapse-arrow bg-base-200 rounded-lg">
+          <summary className="collapse-title text-xl font-medium">Chlorosis</summary>
+          <div className="collapse-content"> 
+            <p>{plant.excessSunLightChlorisDescription}</p>
+        </div>
+        </details>
+        </div>}
+        {plant.excessSunLightLeafCurling && <div className="p-4 -mt-4">
+          <details className="collapse collapse-arrow bg-base-200 rounded-lg">
+          <summary className="collapse-title text-xl font-medium">Leaf Curling</summary>
+          <div className="collapse-content"> 
+            <p>{plant.excessSunLightLeafCurlingDescription}</p>
+        </div>
+        </details>
+        </div>}
+        {plant.excessSunLightLeafScorching && <div className="p-4 -mt-4">
+          <details className="collapse collapse-arrow bg-base-200 rounded-lg">
+          <summary className="collapse-title text-xl font-medium">Leaf Scorching</summary>
+          <div className="collapse-content"> 
+            <p>{plant.excessSunLightLeafScorchingDescription}</p>
+        </div>
+        </details>
+        </div>}
+
+        {plant.excessSunLightSunscald && <div className="p-4 -mt-4">
+          <details className="collapse collapse-arrow bg-base-200 rounded-lg">
+          <summary className="collapse-title text-xl font-medium">Sunscald</summary>
+          <div className="collapse-content"> 
+            <p>{plant.excessSunLightSunscaldDescription}</p>
+        </div>
+        </details>
+        </div>}
+
+        {plant.excessSunLightWilting && <div className="p-4 -mt-4">
+          <details className="collapse collapse-arrow bg-base-200 rounded-lg">
+          <summary className="collapse-title text-xl font-medium">Wilting</summary>
+          <div className="collapse-content"> 
+            <p>{plant.excessSunLightWiltingDescription}</p>
+        </div>
+        </details>
+        </div>}
+        <p className="ml-4 text-lg font-bold mt-4 tex-gray-700">Solutions</p>
+        <div></div>
+        {plant.excessSunLightLeafScorching && <div className="mt-4 flex ml-4 mr-4 text-gray-500">
+          <p>1. Ensure plants receive sufficient water to
+            prevent dehydration. Watering should be done
+            outside of the hottest time period to avoid
+            scorching the plants. It is recommended to
+            water in the morning and evening</p>
+         </div> } 
+
+         {plant.excessSunLightLeafCurling && <div className="mt-4 flex ml-4 mr-4 text-gray-500">
+          <p>2. It is advisable to prune any completely
+             dehydrated or withered parts</p>
+         </div> } 
+
+         {plant.excessSunLightChloris && <div className="mt-4 flex ml-4 mr-4 text-gray-500">
+          <p>3. Provide some protection for plants during
+            hot weather by using shade nets to filter out a
+            portion of sunlight.</p>
+         </div> } 
+
+          {(plant.excessSunLightSunscald || plant.excessSunLightWilting) && <div className="mt-4 flex ml-4 mr-4 text-gray-500">
+          <p>4. Ensure plants receive sufficient water to
+            prevent dehydration. Watering should be done
+            outside of the hottest time period to avoid
+            scorching the plants. It is recommended to
+            water in the morning and evening</p>
+         </div> } 
+      
+      
+      </div>}
     </div>
   )
 }
