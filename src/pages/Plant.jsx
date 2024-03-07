@@ -25,12 +25,19 @@ import fruitIcon from  '../assets/svg/fruitIcon.svg'
 import maturePlantIcon from  '../assets/svg/maturePlantIcon.svg'
 import plantCharact from  '../assets/svg/plantCharact.svg'
 import flowerIcon from  '../assets/svg/flowerIcon.svg'
-
+import { FaHome, FaUser, FaCog } from 'react-icons/fa';
+import {
+  TETabs,
+  TETabsContent,
+  TETabsItem,
+  TETabsPane,
+} from "tw-elements-react";
 
 
 
 import Spinner from "../components/Spinner"
 function Plant() {
+    const [fillActive, setFillActive] = useState("tab1")
     const [plant,setPlant]=useState(null)
     const [loading, setLoading] = useState(true)
     const navigate = useNavigate()
@@ -40,7 +47,7 @@ function Plant() {
     const flowerImage = require(`../assets/png/flowers/${params.plantId}Flower.jpg`)
     const fruitImage = require(`../assets/png/fruit/${params.plantId}Fruit.jpg`)
     const stemImage = require(`../assets/png/stem/${params.plantId}Stem.jpg`)
-
+  
 
     useEffect(() => {
       const fetchListing = async () => {
@@ -56,6 +63,14 @@ function Plant() {
       fetchListing()
       
     }, [navigate, params.plantId])
+
+    const handleFillClick = (value) => {
+      if (value === fillActive) {
+        return;
+      }
+      setFillActive(value);
+    };
+  
 
 
     if (loading) {
@@ -94,7 +109,10 @@ function Plant() {
             <img src={documentIcon} alt="Document" className=" h-6 w-6 " />
             <p className="ml-2 text-xl font-bold text-gray-700">Key Facts</p>
         </div>
-        <p className='ml-6 rounded-lg bg-gray-50 p-2 mr-2 flex justify-between' >Toxicity </p>
+        <p className='ml-6 rounded-lg bg-gray-50 p-2 mr-2 flex justify-between' >Toxicity 
+        
+        <span className="ml-auto">{plant.toxicity}</span>
+        </p>
         <p className='ml-6 rounded-lg  p-2 flex justify-between' >Plant Type 
         
         <span className="ml-auto">{plant.type}</span>
@@ -107,11 +125,11 @@ function Plant() {
         <span className="ml-auto">{plant.plantingTime}</span> 
         </p>
         <p className='ml-6 rounded-lg  bg-gray-50  p-2 mr-2 flex justify-between'>Weed or not 
-        <span className="ml-auto"></span>
+        <span className="ml-auto">{plant.weed}</span>
         </p>
         <p className='ml-6 rounded-lg    p-2 flex justify-between'>Invasiveness
         
-        <span className="ml-auto"></span>
+        <span className="ml-auto">{plant.invasiveness}</span>
         </p>
     </div>
 
@@ -120,13 +138,79 @@ function Plant() {
             <img src={plantCharact} alt="Charact" className=" h-6 w-6 " />
             <p className="ml-2 text-xl font-bold text-gray-700">Characteristics</p>
           </div>
-    <div className=" bg-gray-50 ml-4 mr-4 rounded-lg ">
-      <div className="flex justify-evenly ">
-        <img src={maturePlantIcon} alt="mature" className="h-6 w-6 mt-3" />
-        <img src={flowerIcon} alt="mature" className="h-6 w-6 mt-3" />
-        <img src={fruitIcon} alt="mature" className="h-6 w-6 mt-3" />
-      </div>
-    
+          
+          <div className=" card card-bordered m-4">
+      <TETabs fill>
+        <TETabsItem color="success"
+          onClick={() => handleFillClick("tab1")}
+          active={fillActive === "tab1"}
+        >
+          <div className="flex flex-col items-center justify-center">
+          <img src={maturePlantIcon} className="h-8 w-8 mb-2" /> 
+          <p className="text-center">Mature Plant</p> 
+          </div>
+        </TETabsItem>
+        <TETabsItem color="success"
+          onClick={() => handleFillClick("tab2")}
+          active={fillActive === "tab2"}
+        >
+          <div className="flex flex-col items-center justify-center">
+          <img src={flowerIcon} className="h-8 w-8 mb-2" /> 
+          <p className="text-center">Flower</p> 
+          </div>
+          
+        </TETabsItem>
+        <TETabsItem color="success"
+          onClick={() => handleFillClick("tab3")}
+          active={fillActive === "tab3"}
+        >
+          <div className="flex flex-col items-center justify-center">
+          <img src={fruitIcon} className="h-8 w-8 mb-2" /> 
+          <p className="text-center">Fruit</p> 
+          </div>
+        </TETabsItem>
+        
+      </TETabs>
+
+      <TETabsContent>
+        <TETabsPane show={fillActive === "tab1"}>
+        <p className='ml-6 rounded-lg  p-2 flex justify-between text-gray-500'>Plant Height 
+        <span className="ml-auto text-gray-700">{plant.plantHeight}</span> 
+        </p>
+        <hr className="mt-2 mb-2 ml-6 mr-2"></hr>
+        <p className='ml-6 rounded-lg  p-2 flex justify-between text-gray-500'>Spread
+        <span className="ml-auto text-gray-700">{plant.spread}</span> 
+        </p>
+        <hr className="mt-2 mb-2 ml-6 mr-2"></hr>
+        <p className='ml-6 rounded-lg  p-2 flex justify-between text-gray-500'>Leaf Color
+        <span className="ml-auto text-gray-700">{plant.leafColor}</span> 
+        </p>
+        <hr className="mt-2 mb-2 ml-6 mr-2"></hr>
+
+        </TETabsPane>
+        <TETabsPane show={fillActive === "tab2"}><p className='ml-6 rounded-lg  p-2 flex justify-between text-gray-500'>Bloom Time
+        <span className="ml-auto text-gray-700">{plant.bloomTime}</span> 
+        </p>
+        <hr className="mt-2 mb-2 ml-6 mr-2"></hr>
+        <p className='ml-6 rounded-lg  p-2 flex justify-between text-gray-500'>Flower Size
+        <span className="ml-auto text-gray-700">{plant.flowerSize}</span> 
+        </p>
+        <hr className="mt-2 mb-2 ml-6 mr-2"></hr>
+        <p className='ml-6 rounded-lg  p-2 flex justify-between text-gray-500'>Flower Color
+        <span className="ml-auto text-gray-700">{plant.flowerColor}</span> 
+        </p>
+        <hr className="mt-2 mb-2 ml-6 mr-2"></hr></TETabsPane>
+        <TETabsPane show={fillActive === "tab3"}><p className='ml-6 rounded-lg  p-2 flex justify-between text-gray-500'>Harvest Time
+        <span className="ml-auto text-gray-700">{plant.harvestTime}</span> 
+        </p>
+        <hr className="mt-2 mb-2 ml-6 mr-2"></hr>
+        <p className='ml-6 rounded-lg  p-2 flex justify-between text-gray-500'>Fruit Color
+        <span className="ml-auto text-gray-700">{plant.fruitColor}</span> 
+        </p>
+        <hr className="mt-2 mb-2 ml-6 mr-2"></hr>
+        </TETabsPane>
+        
+      </TETabsContent>
     </div>
 
     </div>

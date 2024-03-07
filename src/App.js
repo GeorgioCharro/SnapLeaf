@@ -14,6 +14,10 @@ import PrivateRoute from './components/PrivateRoute'
 import PlantSunlight from './pages/PlantSunlight';
 import Category from './pages/Category';
 import Plant from './pages/Plant';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 function App() {
   return (
     <>
