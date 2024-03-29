@@ -44,7 +44,7 @@ function PlantSunlight() {
 
 
   return (
-    <div className="bg-gray-50">
+    <div className="bg-gray-50 mb-4">
       <div className="bg-white">
       <p className="ml-4 text-xl mt-4 font-bold text-gray-700">Sunlight needs</p>
       

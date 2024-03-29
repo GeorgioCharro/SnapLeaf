@@ -79,7 +79,7 @@ function Plant() {
 
   return (
     <>
-    <div className="bg-gray-50">
+    <div className="bg-gray-50 mb-32">
     <div className="bg-white">
     <div className="flex items-center pt-5 ml-6">
     <img src={plantIconGuide} alt="PlantGuide" className=" h-6 w-6 " />

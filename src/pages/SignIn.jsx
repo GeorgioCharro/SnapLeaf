@@ -39,6 +39,7 @@ function SignIn() {
     }
     } catch (error) {
       toast.error('Bad User Credentials!')
+      
     }
     
 
@@ -50,8 +51,10 @@ function SignIn() {
 
   return (
     <>
-      <div className="bg-[#F9FAFB] h-screen w-screen flex items-center">
+      <div className="bg-[#F9FAFB]   flex items-center mb-32">
+        
   <div className="h-max mx-auto flex flex-col items-center">
+    <form onSubmit={onSubmit} >
     <img className="h-[40px] w-[47px] mb-5" src="https://tailwindui.com/img/logos/mark.svg?color=green&shade=600" alt="" />
     <h1 className="text-xl font-bold text-center pb-10">Sign in to your account</h1>
     <div className="bg-white shadow-xl p-10 flex flex-col gap-4 text-sm">
@@ -59,11 +62,11 @@ function SignIn() {
       
       <div>
         <label className="text-gray-600 font-bold inline-block pb-2" htmlFor="email">Email</label>
-        <input className="border border-gray-400 focus:outline-slate-400 rounded-md w-full shadow-sm px-5 py-2" onChange={onChange} id='email' type="email" name="email" placeholder="giocharro@hotmail.com" />
+        <input className="border border-gray-400 focus:outline-slate-400 rounded-md w-full shadow-sm px-5 py-2" onChange={onChange} id='email' type="email" name="email" value={email} placeholder="giocharro@hotmail.com" />
       </div>
       <div>
         <label className="text-gray-600 font-bold inline-block pb-2" htmlFor="password">Password</label>
-        <input className="border border-gray-400 focus:outline-slate-400 rounded-md w-full shadow-sm px-5 py-2" onChange={onChange} id='password' type="password" name="password" placeholder="******" />
+        <input className="border border-gray-400 focus:outline-slate-400 rounded-md w-full shadow-sm px-5 py-2" onChange={onChange} id='password' type="password" name="password" value={password} placeholder="******" />
       </div>
       <div className="flex">
         
@@ -72,7 +75,8 @@ function SignIn() {
         </div>
       </div>
       <div>
-        <input className="bg-[#45eb77] w-full py-2 rounded-md text-white font-bold cursor-pointer hover:bg-[#45eb77]" type="submit" value="Login" />
+        
+        <button className="bg-green-500 hover:bg-green-600 w-full py-2 rounded-md text-white font-bold cursor-pointer " type="submit" onSubmit={onSubmit}>Login</button>
       </div>
       <div>
         <p className="text-center">Or continue with</p>
@@ -83,7 +87,8 @@ function SignIn() {
         
     </div>
     <Link to='/sign-up' className=" text-[#45eb77] font-bold registerLink text-sm mt-10">Sign Up Instead</Link>
-  </div>
+  </form></div>
+  
 </div>
     </>
   );

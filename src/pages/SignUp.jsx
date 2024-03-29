@@ -57,42 +57,44 @@ function SignUp() {
 
   return (
     <>
-      <div className="bg-[#F9FAFB] h-auto w-auto flex items-center">
-        <div className="h-max mx-auto flex flex-col items-center">
-          
-          <img className="h-[40px] w-[47px] mb-5" src="https://tailwindui.com/img/logos/mark.svg?color=green&shade=600" alt="" />
-          <h1 className="text-xl font-bold text-center pb-10">Sign Up</h1>
-          <div className="bg-white shadow-xl p-10 flex flex-col gap-4 text-sm">
-            <div className="mb-4">
-              <label className="text-gray-600 font-bold inline-block pb-2" htmlFor="name">Name</label>
-              <input className="border border-gray-400 focus:outline-slate-400 rounded-md w-full shadow-sm px-5 py-2" value={name} type="text" id='name' name="name" placeholder="Mehdi" onChange={onChange} />
-            </div>
-            <div className="mb-4">
-              <label className="text-gray-600 font-bold inline-block pb-2" htmlFor="email">Email</label>
-              <input className="border border-gray-400 focus:outline-slate-400 rounded-md w-full shadow-sm px-5 py-2" value={email} type="email" name="email" id='email' placeholder="mehedi@jaman.com" onChange={onChange} />
-            </div>
-            <div className="mb-4">
-              <label className="text-gray-600 font-bold inline-block pb-2" htmlFor="password">Password</label>
-              <input className="border border-gray-400 focus:outline-slate-400 rounded-md w-full shadow-sm px-5 py-2" value={password} type="password" name="password" id='password' placeholder="******" onChange={onChange} />
-            </div>
-            
-            <div>
-            <form onSubmit={onSubmit}>  
-            <button className="bg-[#45eb77] w-full py-2 rounded-md text-white font-bold cursor-pointer hover:bg-[#45eb77]" type="submit" >Sign Up </button> 
-            </form>
-            </div>
-            
-              <p className="text-center">Or continue with</p>
-            
-            <OAuth />
-            
-          </div>
-          <Link to='/sign-in' className='text-[#45eb77] text-sm mt-10 font-bold'>Sign in</Link>
+      <div className="bg-[#F9FAFB]   flex items-center mb-32">
         
-        
-        
-        </div>
+  <div className="h-max mx-auto flex flex-col items-center">
+    <form onSubmit={onSubmit} >
+    <img className="h-[40px] w-[47px] mb-5" src="https://tailwindui.com/img/logos/mark.svg?color=green&shade=600" alt="" />
+    <h1 className="text-xl font-bold text-center pb-10">Sign in to your account</h1>
+    <div className="bg-white shadow-xl p-10 flex flex-col gap-4 text-sm">
+      
+    <div>
+        <label className="text-gray-600 font-bold inline-block pb-2" htmlFor="name">Name</label>
+        <input className="border border-gray-400 focus:outline-slate-400 rounded-md w-full shadow-sm px-5 py-2" onChange={onChange} id='name' type="text" name="name" value={name} placeholder="Georgio Charro" />
       </div>
+      <div>
+        <label className="text-gray-600 font-bold inline-block pb-2" htmlFor="email">Email</label>
+        <input className="border border-gray-400 focus:outline-slate-400 rounded-md w-full shadow-sm px-5 py-2" onChange={onChange} id='email' type="email" name="email" value={email} placeholder="giocharro@hotmail.com" />
+      </div>
+      <div>
+        <label className="text-gray-600 font-bold inline-block pb-2" htmlFor="password">Password</label>
+        <input className="border border-gray-400 focus:outline-slate-400 rounded-md w-full shadow-sm px-5 py-2" onChange={onChange} id='password' type="password" name="password" value={password} placeholder="******" />
+      </div>
+      
+      <div>
+        
+        <button className="bg-green-500 hover:bg-green-600 w-full py-2 rounded-md text-white font-bold cursor-pointer " type="submit" onSubmit={onSubmit}>Sign Up</button>
+      </div>
+      <div>
+        <p className="text-center">Or continue with</p>
+      </div>
+        <OAuth />
+       
+        
+        
+    </div>
+    <Link to='/sign-up' className=" text-[#45eb77] font-bold registerLink text-sm mt-10">Sign In Instead</Link>
+    
+  </form></div>
+  
+</div>
     </>
   );
 }
