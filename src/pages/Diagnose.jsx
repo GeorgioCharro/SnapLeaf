@@ -10,12 +10,15 @@ import {db} from '../firebase.config'
 import { CameraIcon,EyeDropperIcon } from '@heroicons/react/24/outline';
 import curserIcon from '../assets/svg/cursorIcon.svg'
 import { useLoadScript, Autocomplete } from '@react-google-maps/api';
+import axios from "axios"
 
 const libraries = ['places']
 const autocompleteOptions = {
   componentRestrictions: { country: ['LB'] },
   types:['(cities)']
 };
+const diagnose_key=process.env.REACT_APP_DIAGNOSE_KEY
+const diagnose_url= process.env.REACT_APP_DIAGNOSE_URL
 function Diagnose() {
   const fileInputRef = useRef(null);
   const auth=getAuth()
@@ -25,6 +28,7 @@ function Diagnose() {
   const [geolocationEnabled,setGeoLocation]=useState(true)
   const[inputAdress,setInputAdress]=useState('')
   
+  
   const [formData,setFormData]=useState({
     images:{},
     latitude:0,
@@ -33,7 +37,7 @@ function Diagnose() {
   })
   
 
-  const {images,latidude,longitude,address}=formData
+  const {images,latitude,longitude,address}=formData
   
 
 
@@ -85,7 +89,7 @@ const onSubmit= async(e)=>{
   e.preventDefault()
 
 
-  if(inputAdress.length !== 0 && (latidude ===0 || longitude ===0)){
+  if(inputAdress.length !== 0 && (latitude ===0 || longitude ===0)){
 
   toast.error('Please enter a valid location')
     return
@@ -135,11 +139,20 @@ const onSubmit= async(e)=>{
 
   const imgUrls = await Promise.all(
     [...images].map((image) => storeImage(image))
-  ).catch(() => {
+  ).catch((error) => {
+    console.error('Error uploading images:', error);
     setLoading(false)
     toast.error('Images not uploaded')
-    return
+    return [];
   })
+
+  const validImgUrls = imgUrls.filter(url => url !== undefined);
+
+  if (validImgUrls.length === 0) {
+  // If no valid image URLs, do not proceed with adding the document
+  toast.error('No valid image URLs. Cannot save listing.');
+  return;
+}
 
   const formDataCopy= {
     ...formData,
@@ -151,10 +164,65 @@ const onSubmit= async(e)=>{
   delete formDataCopy.images
   
   const docRef = await addDoc(collection(db,'diagnose'),formDataCopy)
+  console.log(imgUrls,latitude,longitude)
+  console.log(diagnose_url,diagnose_key)
 
-  setLoading(false)
-  toast.success('Listing saved')
+  if (imgUrls.length > 0) {
+    const payload = {
+      img_url: imgUrls[0], // Or however you want to select the image URL
+      longitude: longitude,
+      latitude: latitude
+    }
 
+    try{
+
+      const response = await axios.post('/plant',payload,{
+
+        headers:{
+          'x-api-key':diagnose_key,
+          'user':auth.currentUser.uid,
+
+        },
+      });
+      console.log(response.data)
+      
+      
+
+
+      const diagnoseResponseData ={
+
+        ...response.data,
+        imgUrls,
+        timestamp:serverTimestamp(),
+        userRef:auth.currentUser.uid
+
+      }
+
+      const docRef = await addDoc(collection(db,'diagnoseResponse'),diagnoseResponseData)
+
+      toast.success('Listing saved')
+      navigate(`/my-plants/${docRef.id}`)
+    }catch(error){
+
+      console.error('Error Submitting data',error)
+      toast.error('Failed to submit data')
+    }
+    finally{
+       setLoading(false)
+    }
+
+  }else{
+
+    toast.error('No images provided.');
+    setLoading(false);
+  }
+
+
+  
+
+ 
+  
+  
 
 }
   const handleButtonClick = () => {
@@ -208,7 +276,8 @@ const onSubmit= async(e)=>{
     if(isMounted){
       onAuthStateChanged(auth,(user)=>{
         if(user){
-          setFormData({...formData,useRef: user.uid})
+          setFormData({...formData,userRef: user.uid})
+          
         } else {
        navigate('/sign-in')
 

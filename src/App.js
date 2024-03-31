@@ -13,6 +13,8 @@ import {ToastContainer} from 'react-toastify'
 import PrivateRoute from './components/PrivateRoute'
 import PlantSunlight from './pages/PlantSunlight';
 import Category from './pages/Category';
+import DiagnoseResult from './pages/DiagnoseResult';
+import ErrorPage from './pages/ErrorPage';
 import Plant from './pages/Plant';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -39,7 +41,8 @@ function App() {
       <Route path='/category/:categoryName' element={<Category />} />
       <Route path='/category/:categoryName/:plantId/' element={<Plant />}/>
       <Route path='/category/:categoryName/:plantId/PlantSunlight' element={<PlantSunlight />}/>
-
+      <Route path='/my-plants/:diagnoseId' element={<DiagnoseResult/>} />
+      <Route path='/error' element={<ErrorPage/>} />
       </Routes>
 
 
