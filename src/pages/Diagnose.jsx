@@ -157,7 +157,7 @@ const onSubmit= async(e)=>{
   const formDataCopy= {
     ...formData,
     imgUrls,
-    timestamp:serverTimestamp()
+    
   }
 
   
@@ -194,7 +194,11 @@ const onSubmit= async(e)=>{
         ...response.data,
         imgUrls,
         timestamp:serverTimestamp(),
-        userRef:auth.currentUser.uid
+        userRef:auth.currentUser.uid,
+        address,
+        latitude,
+        longitude
+
 
       }
 
