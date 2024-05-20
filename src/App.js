@@ -16,6 +16,9 @@ import Category from './pages/Category';
 import DiagnoseResult from './pages/DiagnoseResult';
 import ErrorPage from './pages/ErrorPage';
 import Plant from './pages/Plant';
+import MyDiagnose from './pages/MyDiagnose';
+import ChatBotPage from './pages/ChatBotPage';
+import ExpertPage from './pages/ExpertPage';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -43,6 +46,11 @@ function App() {
       <Route path='/category/:categoryName/:plantId/PlantSunlight' element={<PlantSunlight />}/>
       <Route path='/my-plants/:diagnoseId' element={<DiagnoseResult/>} />
       <Route path='/error' element={<ErrorPage/>} />
+      <Route path='/my-diagnose' element={<MyDiagnose/>} />
+      <Route path='/chatbot' element={<ChatBotPage/>} />
+      <Route path='/expert' element={<ExpertPage/>} />
+      <Route path='/expert/:diagnoseId' element={<ExpertPage/>} />
+      <Route path='/chatbot/:diagnoseId' element={<ChatBotPage/>} />
       </Routes>
 
 
