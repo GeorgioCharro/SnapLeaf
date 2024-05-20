@@ -55,8 +55,7 @@ function SignIn() {
         
   <div className="h-max mx-auto flex flex-col items-center">
     <form onSubmit={onSubmit} >
-    <img className="h-[40px] w-[47px] mb-5" src="https://tailwindui.com/img/logos/mark.svg?color=green&shade=600" alt="" />
-    <h1 className="text-xl font-bold text-center pb-10">Sign in to your account</h1>
+    <h1 className="text-xl font-bold text-center pb-10 mt-10">Sign in to your account</h1>
     <div className="bg-white shadow-xl p-10 flex flex-col gap-4 text-sm">
       
       
@@ -86,7 +85,7 @@ function SignIn() {
         
         
     </div>
-    <Link to='/sign-up' className=" text-[#45eb77] font-bold registerLink text-sm mt-10">Sign Up Instead</Link>
+    <Link to='/sign-up' className=" text-[#45eb77] font-bold registerLink text-sm mt-10 flex justify-center">Sign Up Instead</Link>
   </form></div>
   
 </div>
