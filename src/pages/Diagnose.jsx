@@ -19,7 +19,7 @@ const autocompleteOptions = {
   types: ['(cities)']
 };
 const diagnose_key = process.env.REACT_APP_DIAGNOSE_KEY;
-const diagnose_url = process.env.REACT_APP_DIAGNOSE_URL;
+
 
 function Diagnose() {
   const fileInputRef = useRef(null);
@@ -27,7 +27,7 @@ function Diagnose() {
   const navigate = useNavigate();
   const isMounted = useRef(true);
   const [loading, setLoading] = useState(false);
-  const [geolocationEnabled, setGeoLocation] = useState(true);
+  
   const [inputAdress, setInputAdress] = useState('');
 
   const [formData, setFormData] = useState({
@@ -44,7 +44,7 @@ function Diagnose() {
     libraries,
   });
   const autocompleteRef = useRef(null);
-  const [addressResult, setAddress] = useState("");
+  
 
   const handlePlaceChanged = () => {
     if (autocompleteRef.current && typeof autocompleteRef.current.getPlace === 'function') {
@@ -65,7 +65,7 @@ function Diagnose() {
         }));
 
         // Optionally, update any other state that depends on the place selection, e.g., setAddress for UI display
-        setAddress(address);
+        
         
       } else {
         // Handle cases where no geometry is found (optional)
@@ -326,7 +326,7 @@ function Diagnose() {
                         <span className="label-text-alt text-sm text-gray-500"></span>
                         <span className="label-text-alt text-gray-600 text-sm flex">
                           Why is it important?
-                          <img src={curserIcon} className="h-5 w-5 text-green-500" />
+                          <img src={curserIcon} className="h-5 w-5 text-green-500" alt="Click" />
                         </span>
                       </div>
                     </label>

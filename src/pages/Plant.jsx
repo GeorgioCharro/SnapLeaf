@@ -5,7 +5,6 @@ import bookIcon from '../assets/svg/bookIcon.svg'
 import plantIconGuide from '../assets/svg/plantGuide.svg'
 import plantCare from '../assets/svg/plantCare.svg'
 import { getDoc, doc } from 'firebase/firestore'
-import { getAuth } from 'firebase/auth'
 import { db } from '../firebase.config'
 import { useState, useEffect } from 'react'
 import temperatureIcon from '../assets/svg/temperatureIcon.svg'
@@ -25,7 +24,7 @@ import fruitIcon from  '../assets/svg/fruitIcon.svg'
 import maturePlantIcon from  '../assets/svg/maturePlantIcon.svg'
 import plantCharact from  '../assets/svg/plantCharact.svg'
 import flowerIcon from  '../assets/svg/flowerIcon.svg'
-import { FaHome, FaUser, FaCog } from 'react-icons/fa';
+
 import {
   TETabs,
   TETabsContent,
@@ -41,7 +40,7 @@ function Plant() {
     const [plant,setPlant]=useState(null)
     const [loading, setLoading] = useState(true)
     const navigate = useNavigate()
-    const auth = getAuth()
+    
     const params=useParams()
     const leafImage = require(`../assets/png/leaves/${params.plantId}Leaf.jpg`)
     const flowerImage = require(`../assets/png/flowers/${params.plantId}Flower.jpg`)
@@ -82,7 +81,7 @@ function Plant() {
     <div className="bg-gray-50 mb-32">
     <div className="bg-white">
     <div className="flex items-center pt-5 ml-6">
-    <img src={plantIconGuide} alt="PlantGuide" className=" h-6 w-6 " />
+    <img src={plantIconGuide} alt="PlantGuide" className=" h-6 w-6 "  />
     <p className="ml-2 text-xl font-bold text-gray-700">Field Guide</p>
     </div>
     <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-2 p-10 rounded-xl">
@@ -146,7 +145,7 @@ function Plant() {
           active={fillActive === "tab1"}
         >
           <div className="flex flex-col items-center justify-center">
-          <img src={maturePlantIcon} className="h-8 w-8 mb-2" /> 
+          <img src={maturePlantIcon} className="h-8 w-8 mb-2" alt="MaturePlant" /> 
           <p className="text-center">Mature Plant</p> 
           </div>
         </TETabsItem>
@@ -155,7 +154,7 @@ function Plant() {
           active={fillActive === "tab2"}
         >
           <div className="flex flex-col items-center justify-center">
-          <img src={flowerIcon} className="h-8 w-8 mb-2" /> 
+          <img src={flowerIcon} className="h-8 w-8 mb-2" alt="FlowerIcon" /> 
           <p className="text-center">Flower</p> 
           </div>
           
@@ -165,7 +164,7 @@ function Plant() {
           active={fillActive === "tab3"}
         >
           <div className="flex flex-col items-center justify-center">
-          <img src={fruitIcon} className="h-8 w-8 mb-2" /> 
+          <img src={fruitIcon} className="h-8 w-8 mb-2" alt="FruitImg" /> 
           <p className="text-center">Fruit</p> 
           </div>
         </TETabsItem>
