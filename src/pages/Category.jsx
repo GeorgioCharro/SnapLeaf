@@ -29,7 +29,7 @@ function Category() {
 
                 setPlants(plants)
                 setLoading(false)
-                console.log(plants)
+                
 
             } catch (error) {
                 toast.error('Could not fetch Listings')
@@ -37,7 +37,7 @@ function Category() {
 
         }
         fetchPlants()
-        console.log(params.categoryName)
+        
 
     },[params.categoryName])
 

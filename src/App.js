@@ -3,7 +3,6 @@ import HomePage from './pages/HomePage';
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import Profile from './pages/Profile';
-import MyPlants from './pages/MyPlants';
 import NavBar from './components/NavBar';
 import Diagnose from './pages/Diagnose';
 import MorePage from './pages/MorePage';
@@ -19,6 +18,8 @@ import Plant from './pages/Plant';
 import MyDiagnose from './pages/MyDiagnose';
 import ChatBotPage from './pages/ChatBotPage';
 import ExpertPage from './pages/ExpertPage';
+import ExpertQuestionPage from './pages/ExpertQuestionPage';
+import DiagnoseQuestions from './pages/DiagnoseQuestions';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -37,7 +38,6 @@ function App() {
       </Route>
       <Route path='/sign-in' element={<SignIn/>} />
       <Route path='/sign-up' element={<SignUp/>} />
-      <Route path='/my-plants' element={<MyPlants/>} />
       <Route path='/diagnose' element={<Diagnose/>} />
       <Route path='/more-page' element={<MorePage/>} />
       <Route path='/forgot-password' element={<ForgotPassword/>} />
@@ -51,6 +51,10 @@ function App() {
       <Route path='/expert' element={<ExpertPage/>} />
       <Route path='/expert/:diagnoseId' element={<ExpertPage/>} />
       <Route path='/chatbot/:diagnoseId' element={<ChatBotPage/>} />
+      <Route path='/diagnose-questions' element={<ExpertQuestionPage/>} />
+      <Route path='/diagnose-questions/:diagnoseId' element={<ExpertQuestionPage/>} />
+      <Route path='/expert-questions/:diagnoseId' element={<DiagnoseQuestions/>} />
+      
       </Routes>
 
 

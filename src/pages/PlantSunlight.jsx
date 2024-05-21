@@ -1,9 +1,8 @@
 
-import { useParams,Navigate, useNavigate } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import sunIconInfo from '../assets/svg/sunIconInfo.svg'
 import cloudyIconInfo from '../assets/svg/cloudyIconInfo.svg'
 import { getDoc, doc } from 'firebase/firestore'
-import { getAuth } from 'firebase/auth'
 import { db } from '../firebase.config'
 import { useState, useEffect } from 'react'
 import flowerNote from '../assets/svg/flowerNote.svg'
@@ -20,7 +19,7 @@ function PlantSunlight() {
 
   const navigate=useNavigate()
   const params = useParams()
-  const auth = getAuth()
+  
   useEffect(() => {
     const fetchListing = async () => {
       const docRef = doc(db, 'plants', params.plantId)

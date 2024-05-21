@@ -7,7 +7,6 @@ import axios from 'axios';
 
 function ChatBotPage() {
   const { diagnoseId } = useParams();
-  const [diagnose, setDiagnose] = useState(null);
   const [message, setMessage] = useState('');
   const [chatHistory, setChatHistory] = useState([]);
   const auth = getAuth();
@@ -15,17 +14,18 @@ function ChatBotPage() {
 
   useEffect(() => {
     const fetchDiagnose = async () => {
-      const docRef = doc(db, 'diagnoseResponse', diagnoseId);
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists() && docSnap.data().userRef === user.uid) {
-        setDiagnose(docSnap.data());
-      } else {
-        console.error('Diagnose not found or unauthorized access');
+      if (user) {
+        const docRef = doc(db, 'diagnoseResponse', diagnoseId);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists() && docSnap.data().userRef === user.uid) {
+          // You might want to do something with diagnose data here if needed in the future
+          console.log('Diagnose data fetched', docSnap.data());
+        } else {
+          console.error('Diagnose not found or unauthorized access');
+        }
       }
     };
-    if (user) {
-      fetchDiagnose();
-    }
+    fetchDiagnose();
   }, [diagnoseId, user]);
 
   const handleSendMessage = async () => {
@@ -69,7 +69,7 @@ function ChatBotPage() {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 mb-32">
       <h1 className="text-2xl font-bold mb-4">ChatBot Support</h1>
       <div className="border rounded-lg p-4 h-96 overflow-y-auto mb-4">
         {chatHistory.map((msg, index) => (

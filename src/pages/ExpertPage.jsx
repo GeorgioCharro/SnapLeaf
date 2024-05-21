@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { getAuth } from 'firebase/auth';
 import { db } from '../firebase.config';
 import { doc, setDoc } from 'firebase/firestore';
+import { toast } from 'react-toastify';
 
 function ExpertPage() {
   const { diagnoseId } = useParams();
+  const navigate = useNavigate();
   const auth = getAuth();
   const [formData, setFormData] = useState({
     plantType: '',
@@ -37,15 +39,17 @@ function ExpertPage() {
       if (user) {
         const docRef = doc(db, 'expertDiagnose', diagnoseId);
         await setDoc(docRef, { ...formData, userRef: user.uid, diagnoseId });
-        alert('Data saved successfully!');
+        toast.success('Data saved successfully!');
+        navigate('/');
       }
     } catch (error) {
-      console.error('Error saving data: ', error);
+      toast.error('Error saving data: ' + error.message);
     }
   };
 
   return (
     <div className="container mx-auto p-4 mb-32">
+      
       <h1 className="text-2xl font-bold mb-4">Expert Diagnosis</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>

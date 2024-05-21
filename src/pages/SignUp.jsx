@@ -10,7 +10,8 @@ function SignUp() {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
-    name: ''
+    name: '',
+    expert: false
   });
 
   const { email, password, name } = formData;
